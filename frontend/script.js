@@ -78,3 +78,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     buscarMusicas();
 })
+// Função para exibir a notificação
+function exibirNotificacao(mensagem) {
+    const toast = document.createElement("div");
+    toast.classList.add("toast");
+    toast.textContent = mensagem;
+
+    // Adiciona a notificação na tela
+    document.body.appendChild(toast);
+
+    // Exibe a notificação
+    setTimeout(() => {
+        toast.classList.add("show");
+    }, 100);
+
+    // Esconde a notificação após 3 segundos
+    setTimeout(() => {
+        toast.classList.remove("show");
+        // Remove a notificação do DOM depois de 4 segundos
+        setTimeout(() => {
+            toast.remove();
+        }, 500);
+    }, 3000);
+}
+adicionarBtn.addEventListener("click", async () => {
+    const novaMusica = {
+        id: Date.now(),
+        titulo: tituloInput.value,
+        artista: artistaInput.value,
+        genero: generoInput.value,
+        link: linkInput.value
+    };
+
+    const resposta = await fetch("/musicas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(novaMusica)
+    });
+
+    if (resposta.ok) {
+        tituloInput.value = "";
+        artistaInput.value = "";
+        generoInput.value = "";
+        linkInput.value = "";
+        buscarMusicas();
+        exibirNotificacao("Música adicionada com sucesso!");
+    } else {
+        alert("Erro ao adicionar música.");
+    }
+});
+removerBtn.addEventListener("click", async () => {
+    await fetch(`/musicas/${musica.id}`, {
+        method: "DELETE"
+    });
+    buscarMusicas();
+    exibirNotificacao("Música removida com sucesso!");
+});
