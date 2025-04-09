@@ -1,0 +1,142 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fundo com neblina */
+.fundo-animado {
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    z-index: -1;
+    background: radial-gradient(circle at center, #0b2e1f 0%, #000000 100%);
+    animation: moverNeblina 15s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+
+@keyframes moverNeblina {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    25% {
+        transform: translate(30px, -20px);
+    }
+    50% {
+        transform: translate(-40px, 30px);
+    }
+    75% {
+        transform: translate(20px, -30px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+
+
+
+
+
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #1DB954;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #d0cff1;
+    margin-top: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+li {
+    margin: 5px 0;
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: #181818;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    margin: 5px;
+    color: #FFF;
+    border-radius: 4px;
+    width: 160px;
+}
+
+button {
+    background-color: #1DB954;
+    color: #000;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #1ed760;
+}
+
+#listaMusicas li a {
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#listaMusicas li a:hover {
+    text-decoration: underline;
+    color: #1ed760;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.remover-btn {
+    margin-left: 10px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remover-btn:hover {
+    background-color: #ff6666;
+}
